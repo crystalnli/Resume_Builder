@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bar"
+    app:startDestination="@id/resumeFragment">
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.resumebuilder.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.resumebuilder.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_personalInfoInputFragment"
+            app:destination="@id/personalInfoInputFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_skillsInputFragment"
+            app:destination="@id/skillsInputFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_educationInputFragment"
+            app:destination="@id/educationInputFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_referenceInputFragment"
+            app:destination="@id/referenceInputFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_experienceFragment"
+            app:destination="@id/experienceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resumeFragment"
+        android:name="com.example.resumebuilder.ResumeFragment"
+        android:label="fragment_resume"
+        tools:layout="@layout/fragment_resume" >
+        <action
+            android:id="@+id/action_resumeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalInfoInputFragment"
+        android:name="com.example.resumebuilder.PersonalInfoInputFragment"
+        android:label="fragment_personal_info_input"
+        tools:layout="@layout/fragment_personal_info_input" >
+        <action
+            android:id="@+id/action_personalInfoInputFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/skillsInputFragment"
+        android:name="com.example.resumebuilder.SkillsInputFragment"
+        android:label="fragment_skills_input"
+        tools:layout="@layout/fragment_skills_input" />
+    <fragment
+        android:id="@+id/educationInputFragment"
+        android:name="com.example.resumebuilder.EducationInputFragment"
+        android:label="fragment_education_input"
+        tools:layout="@layout/fragment_education_input" />
+    <fragment
+        android:id="@+id/referenceInputFragment"
+        android:name="com.example.resumebuilder.referenceInputFragment"
+        android:label="fragment_reference_input"
+        tools:layout="@layout/fragment_reference_input" />
+    <fragment
+        android:id="@+id/experienceFragment"
+        android:name="com.example.resumebuilder.ExperienceFragment"
+        android:label="fragment_experience"
+        tools:layout="@layout/fragment_experience" />
+
+</navigation>
