@@ -1,7 +1,9 @@
 package com.example.resumebuilder
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import java.io.File
+import java.io.FileInputStream
 import java.io.FileOutputStream
 
 class DataProcess{
@@ -12,9 +14,25 @@ class DataProcess{
             return directory.absolutePath
         }
 
-        fun writeToFile(str:String?){
-            var file = File(getWorkingDirectory(),"savedData.txt")
-            file.writeText(str?:"",Charsets.UTF_8)
+
+        fun write(path: File?, fileName:String, data:String){
+            val file = File(path,fileName)
+            if(!file.exists()) file.createNewFile()
+            FileOutputStream(file).use {
+                it.write(data.toByteArray())
+            }
+            Log.d("write",data)
+        }
+
+
+        fun read(path: File?, fileName:String) : String{
+            val file = File(path,fileName)
+            var data = ""
+            if(file.exists()){
+                data = FileInputStream(file).bufferedReader().use { it.readText() }
+                Log.d("checktag",data)
+            }
+            return data
         }
 
 

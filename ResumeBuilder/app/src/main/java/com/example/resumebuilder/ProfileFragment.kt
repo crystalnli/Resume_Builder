@@ -34,12 +34,22 @@ class ProfileFragment : Fragment() {
         binding.education.setOnClickListener {
                 view: View ->
             view.findNavController()
-                .navigate(R.id.action_profileFragment_to_personalInfoInputFragment)
+                .navigate(R.id.action_profileFragment_to_educationInputFragment)
         }
         binding.skills.setOnClickListener {
                 view: View ->
             view.findNavController()
                 .navigate(R.id.action_profileFragment_to_skillsInputFragment)
+        }
+        binding.expr.setOnClickListener {
+                view: View ->
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_experienceFragment)
+        }
+        binding.ref.setOnClickListener {
+                view: View ->
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_referenceInputFragment)
         }
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_profile, container, false)
