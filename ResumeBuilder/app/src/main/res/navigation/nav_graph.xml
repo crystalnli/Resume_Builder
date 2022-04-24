@@ -53,7 +53,11 @@
         android:id="@+id/skillsInputFragment"
         android:name="com.example.resumebuilder.SkillsInputFragment"
         android:label="fragment_skills_input"
-        tools:layout="@layout/fragment_skills_input" />
+        tools:layout="@layout/fragment_skills_input" >
+        <action
+            android:id="@+id/action_skillsInputFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/educationInputFragment"
         android:name="com.example.resumebuilder.EducationInputFragment"

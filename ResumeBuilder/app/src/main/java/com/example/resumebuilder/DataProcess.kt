@@ -40,10 +40,4 @@ class DataProcess{
     }
 
 
-    fun write(fName:String){
-    }
-
-    fun read(fName:String){
-    }
-
 }

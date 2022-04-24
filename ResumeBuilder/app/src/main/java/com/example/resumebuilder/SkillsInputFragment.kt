@@ -1,59 +1,63 @@
 package com.example.resumebuilder
 
+import com.example.resumebuilder.*
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.core.view.isVisible
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.resumebuilder.databinding.FragmentSkillsInputBinding
 
 /**
  * A simple [Fragment] subclass.
  * Use the [SkillsInputFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+
+private lateinit var recyclerView : RecyclerView
+private lateinit var binding: FragmentSkillsInputBinding
+private lateinit var skills: ArrayList<String>
 class SkillsInputFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    var fileName = "skills"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            val path = context?.filesDir
+            var data = DataProcess.read(path,fileName)
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_skills_input, container, false)
+
+        binding = FragmentSkillsInputBinding.inflate(layoutInflater)
+        val view = inflater.inflate(R.layout.fragment_skills_input,container,false)
+        recyclerView= binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        //var adapter //= skillListAdapter(requireContext(),it)
+        //recyclerView.adapter = adapter
+        var root = binding.root
+        binding.back.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(R.id.action_skillsInputFragment_to_profileFragment)
+        }
+        return root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SkillsInputFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SkillsInputFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun updateList(view: RecyclerView, data:String){
+        if (data!=""){
+            recyclerView.isVisible = true
+            var dataFromFile = data!!.split("\n")
+        }
+        else{
+            recyclerView.isVisible = false
+        }
     }
 }
