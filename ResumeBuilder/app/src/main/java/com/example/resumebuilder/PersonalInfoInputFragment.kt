@@ -8,17 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.resumebuilder.databinding.FragmentPersonalInfoInputBinding
-import android.content.Context
+
 import android.widget.Toast
 import com.example.resumebuilder.models.PersonalInfo
 import com.google.gson.Gson
-import java.io.FileInputStream
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PersonalInfoInputFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 
 private lateinit var binding: FragmentPersonalInfoInputBinding
 class PersonalInfoInputFragment : Fragment() {
@@ -57,8 +50,8 @@ class PersonalInfoInputFragment : Fragment() {
                 var fileContents: String = gson.toJson(data)
                 DataProcess.write(path, filename, fileContents)
                 Toast.makeText(context, "Data saved", Toast.LENGTH_SHORT).show()
-                View.OnClickListener{ view -> view.findNavController() .navigate(R.id.action_personalInfoInputFragment_to_profileFragment)
-                }
+                view?.findNavController()?.navigate(R.id.action_personalInfoInputFragment_to_profileFragment)
+
             }
             else{
                 Toast.makeText(context, "Please fill all required section ", Toast.LENGTH_SHORT).show()

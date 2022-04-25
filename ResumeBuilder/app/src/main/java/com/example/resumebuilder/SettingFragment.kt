@@ -5,35 +5,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import com.example.resumebuilder.databinding.FragmentSettingBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+private lateinit var binding:FragmentSettingBinding
 class SettingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_setting, container, false)
+        binding = FragmentSettingBinding.inflate(layoutInflater)
+        val root = binding.root
+        val about = binding.about
+        val text = binding.editTextTextMultiLine
+        text.setText("ResumeBuilder version 1.0")
+        val back = binding.back
+        about.setOnClickListener{
+            about.isVisible = false
+            text.isVisible = true
+            back.isVisible = true
 
-        return view
+        }
+
+        back.setOnClickListener{
+            about.isVisible = true
+            text.isVisible = false
+            back.isVisible = false
+        }
+
+        return root
     }
 
 }

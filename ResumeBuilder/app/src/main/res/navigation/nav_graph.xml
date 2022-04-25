@@ -62,16 +62,28 @@
         android:id="@+id/educationInputFragment"
         android:name="com.example.resumebuilder.EducationInputFragment"
         android:label="fragment_education_input"
-        tools:layout="@layout/fragment_education_input" />
+        tools:layout="@layout/fragment_education_input" >
+        <action
+            android:id="@+id/action_educationInputFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/referenceInputFragment"
         android:name="com.example.resumebuilder.referenceInputFragment"
         android:label="fragment_reference_input"
-        tools:layout="@layout/fragment_reference_input" />
+        tools:layout="@layout/fragment_reference_input" >
+        <action
+            android:id="@+id/action_referenceInputFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/experienceFragment"
         android:name="com.example.resumebuilder.ExperienceFragment"
         android:label="fragment_experience"
-        tools:layout="@layout/fragment_experience" />
+        tools:layout="@layout/fragment_experience" >
+        <action
+            android:id="@+id/action_experienceFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
 </navigation>
