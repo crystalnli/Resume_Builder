@@ -35,7 +35,7 @@ class SkillViewModel(app: Application) : AndroidViewModel(app) {
         val skillList = adapter.fromJson(data)
         skillData.value = adapter.fromJson(data)?:emptyList()
         for(skill in skillList?: emptyList()){
-            Log.d("tttestskill",skill.skill.toString())
+            //Log.d("tttestskill",skill.skill.toString())
         }
 
     }

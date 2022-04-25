@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.resumebuilder.R
 import com.example.resumebuilder.models.Skill
 
-class SkillListAdapter (val context: Context, val skills:List<Skill>,val itemListener: SkillItemListener): RecyclerView.Adapter<SkillListAdapter.ViewHolder>(){
+class SkillListAdapter (val context: Context,
+                        val skills:List<Skill>,
+                        val itemListener: SkillItemListener):
+    RecyclerView.Adapter<SkillListAdapter.ViewHolder>(){
 
+    private val adpOnClickListener : View.OnClickListener = View.OnClickListener { v ->Log.d("aaaaa","bbbbb") }
 
-    override fun getItemCount(): Int {
-        return skills.size
-    }
+    override fun getItemCount()= skills.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from((parent.context))
@@ -29,10 +31,11 @@ class SkillListAdapter (val context: Context, val skills:List<Skill>,val itemLis
         val skill = skills[position]
         with(holder){
             etext?.let{
-                Log.d("tttttttt","ssss")
                 it.setText(skill.skill, TextView.BufferType.EDITABLE)
             }
+
             holder.itemView.setOnClickListener{
+                Log.d("tttttttt","ssss")
                 itemListener.onSkillClick(skill)
             }
         }
@@ -42,13 +45,11 @@ class SkillListAdapter (val context: Context, val skills:List<Skill>,val itemLis
         val etext = itemView.findViewById<EditText>(R.id.textToDisplay)
         val editBtn = itemView.findViewById<Button>(R.id.editskill)
         val delBtn = itemView.findViewById<Button>(R.id.deleteSkill)
+
     }
 
     interface SkillItemListener{
-        fun onSkillClick(skill:Skill){
-
-        }
-    }
+        fun onSkillClick(skill:Skill) }
 
 
 }

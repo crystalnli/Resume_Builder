@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -27,7 +28,7 @@ import com.example.resumebuilder.ui.SkillViewModel
 
 
 private lateinit var recyclerView : RecyclerView
-private lateinit var binding: FragmentSkillsInputBinding
+//private lateinit var binding: FragmentSkillsInputBinding
 private lateinit var viewModel: SkillViewModel
 class SkillsInputFragment : Fragment() , SkillListAdapter.SkillItemListener{
     var fileName = "skills"
@@ -42,19 +43,24 @@ class SkillsInputFragment : Fragment() , SkillListAdapter.SkillItemListener{
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSkillsInputBinding.inflate(layoutInflater)
+        //binding = FragmentSkillsInputBinding.inflate(layoutInflater)
         val view = inflater.inflate(R.layout.fragment_skills_input,container,false)
         recyclerView= view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
         viewModel = ViewModelProvider(this).get(SkillViewModel::class.java)
         viewModel.skillData.observe(viewLifecycleOwner, Observer {
-            var adapter = SkillListAdapter(requireContext(),it,this)
+            val adapter = SkillListAdapter(requireContext(),it,this)
             recyclerView.adapter = adapter
 
-            //binding.back.setOnClickListener { view: View ->
-            //    view.findNavController()
-            //       .navigate(R.id.action_skillsInputFragment_to_profileFragment)
+            //val addSkillBtn = view.findViewById<Button>(R.id.addSkill)
+            //addSkillBtn.setOnClickListener{
+            //        view: View ->
             //}
+            val backBtn = view.findViewById<Button>(R.id.skillBack)
+            backBtn.setOnClickListener { view: View ->
+                view.findNavController()
+                   .navigate(R.id.action_skillsInputFragment_to_profileFragment)
+            }
         })
 
 
