@@ -35,6 +35,13 @@ class DataProcess{
             return data
         }
 
+        fun readFileFromAssets(context:Context,fileName: String):String{
+            return context.assets.open(fileName).use {
+                it.bufferedReader().use{
+                    it.readText()
+                }
+            }
+        }
 
 
     }

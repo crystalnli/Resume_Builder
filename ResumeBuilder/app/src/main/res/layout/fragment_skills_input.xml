@@ -19,45 +19,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="267dp"
-        android:layout_height="411dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addSkill"
-        app:layout_constraintVertical_bias="0.079" />
-
-    <LinearLayout
-        android:id = "@+id/skills"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addSkill"
-        android:visibility="invisible">
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:inputType="phone" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="@drawable/ic_outline_edit_24"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="@drawable/ic_delete"
-            />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/addSkill"/>
 
     <Button
         android:id="@+id/back"
@@ -68,4 +39,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
