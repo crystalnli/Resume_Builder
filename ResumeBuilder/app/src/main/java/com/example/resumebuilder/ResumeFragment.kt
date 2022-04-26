@@ -1,7 +1,6 @@
 package com.example.resumebuilder
 
 import android.Manifest
-import android.app.Application
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.example.resumebuilder.databinding.FragmentResumeBinding
 
 private lateinit var binding: FragmentResumeBinding
@@ -24,15 +22,15 @@ class ResumeFragment : Fragment() {
     ): View? {
 
         binding = FragmentResumeBinding.inflate(layoutInflater)
-        val root: View = binding.root
 
+        val root: View = binding.root
+        val path = context?.filesDir
         binding.addResume.setOnClickListener{
             if(ContextCompat.checkSelfPermission(
                     requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE
                 )==PackageManager.PERMISSION_GRANTED){
-                    DataProcess.generatePDF(Application(),"tttttttttt","test")
-                view?.findNavController()?.navigate(R.id.action_resumeFragment_to_profileFragment)
-
+                //DataProcess.generatePDF("test","test")
+                view?.let { it1 -> DataProcess.pdf(it1,path) }
             }
             else{
                 requestPermissions(arrayOf(

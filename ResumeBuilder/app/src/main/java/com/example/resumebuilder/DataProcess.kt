@@ -6,6 +6,7 @@ import android.graphics.pdf.PdfDocument
 import android.os.Build
 import android.os.Environment
 import android.util.Log
+import android.view.View
 import androidx.annotation.RequiresApi
 import java.io.File
 import java.io.FileInputStream
@@ -52,19 +53,18 @@ class DataProcess{
         }
 
 
-        fun generatePDF(app:Application,data:String, fileName: String) {
+        fun generatePDF(data:String, fileName: String) {
             val pdf = PdfDocument()
             val page = pdf.startPage(PdfDocument.PageInfo.Builder(
                 100, 200, 1).create())
             val canvas = page.canvas
             val paint = Paint()
-
             try {
                 canvas.drawText(data,10F,20F,paint)
                 pdf.finishPage(page)
 
-                val fileName = "testingiing.pdf"
-                val file = File(Environment.getExternalStorageDirectory(),fileName)
+                val fileName = "testing.pdf"
+                val file = File(getWorkingDirectory(),fileName)
                 pdf.writeTo(file.outputStream())
                 pdf.close()
 
@@ -81,6 +81,29 @@ class DataProcess{
                 }
             }
         }
+
+
+        fun pdf(view: View,path: File?){
+            // create a new document
+            val document = PdfDocument();
+
+            // create a page description
+            val pageInfo = PdfDocument.PageInfo.Builder(100, 100, 1).create();
+
+            // start a page
+            val page = document.startPage(pageInfo);
+            view.draw(page.getCanvas());
+            document.finishPage(page);
+            val fileName = "testing.pdf"
+            val file = File(Environment.getExternalStorageDirectory(),fileName)
+            document.writeTo(file.outputStream());
+            // close the document
+            document.close();
+
+            Log.d("location",file.absolutePath)
+        }
+
+
 
     }
 
