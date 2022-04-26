@@ -51,6 +51,7 @@ class PersonalInfoInputFragment : Fragment() {
                 Toast.makeText(context, "Data saved", Toast.LENGTH_SHORT).show()
                 view?.findNavController()?.navigate(R.id.action_personalInfoInputFragment_to_profileFragment)
 
+
             }
             else{
                 Toast.makeText(context, "Please fill all required section ", Toast.LENGTH_SHORT).show()
